@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { eye, eyeOff, lockClosed } from 'ionicons/icons';
 
@@ -13,12 +14,17 @@ export class LoginPage implements OnInit {
   username: string = ''; // Inicializamos username
   password: string = ''; // Inicializamos password
 
-  constructor() { 
+  constructor(private router: Router) { 
     addIcons({ eye, eyeOff, lockClosed });
-  }
 
+
+  }
+  goHome() {
+    this.router.navigate(['/home']);
+  }
   ngOnInit() { }
 
+  
   // Método para alternar la visibilidad de la contraseña
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
