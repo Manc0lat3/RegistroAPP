@@ -1,14 +1,14 @@
 <ion-content>
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="goHome()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>RegistroAPP</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="goHome()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>RegistroAPP</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
   <form #loginForm="ngForm">
     <ion-list>
@@ -20,21 +20,19 @@
           placeholder="Usuario"
           required
           minlength="3"
-          maxlength="8"
-          pattern="^[a-zA-Z0-9]+$"
+          maxlength="10"
           [(ngModel)]="username" 
           name="username" 
           #usernameInput="ngModel">
         </ion-input>
         <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
           <ion-text color="danger" *ngIf="usernameInput.errors?.['required']">El nombre de usuario es requerido.</ion-text>
-          <ion-text color="danger" *ngIf="usernameInput.errors?.['minlength']">El nombre de usuario debe tener al menos 3 caracteres.</ion-text>
-          <ion-text color="danger" *ngIf="usernameInput.errors?.['maxlength']">El nombre de usuario no debe exceder los 8 caracteres.</ion-text>
-          <ion-text color="danger" *ngIf="usernameInput.errors?.['pattern']">Solo se permiten caracteres alfanuméricos.</ion-text>
+          <ion-text color="danger" *ngIf="usernameInput.errors?.['minlength']">Debe tener al menos 3 caracteres.</ion-text>
+          <ion-text color="danger" *ngIf="usernameInput.errors?.['maxlength']">No debe exceder los 10 caracteres.</ion-text>
         </div>
       </ion-item>
 
-      <!-- Campo de contraseña -->
+      <!-- Campo de contraseña con alternancia de visibilidad -->
       <ion-item>
         <ion-input 
           [type]="passwordFieldType" 
@@ -53,7 +51,7 @@
 
     <!-- Botón de Iniciar Sesión -->
     <div class="ion-text-center">
-      <ion-button expand="full" shape="round" [disabled]="!loginForm.valid">Iniciar Sesión</ion-button>
+      <ion-button expand="full" shape="round" (click)="login()">Iniciar Sesión</ion-button>
     </div>
   </form>
 </ion-content>
