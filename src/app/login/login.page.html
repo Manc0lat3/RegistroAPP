@@ -12,7 +12,7 @@
 
   <form #loginForm="ngForm">
     <ion-list>
-      <!-- Campo de nombre de usuario con validaciones -->
+
       <ion-item>
         <ion-input 
           labelPlacement="stacked" 
@@ -32,7 +32,6 @@
         </div>
       </ion-item>
 
-      <!-- Campo de contraseña con alternancia de visibilidad -->
       <ion-item>
         <ion-input 
           [type]="passwordFieldType" 
@@ -49,7 +48,6 @@
       </ion-item>
     </ion-list>
 
-    <!-- Botón de Iniciar Sesión -->
     <div class="ion-text-center">
       <ion-button expand="full" shape="round" (click)="login()">Iniciar Sesión</ion-button>
     </div>
