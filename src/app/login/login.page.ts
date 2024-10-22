@@ -1,56 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { addIcons } from 'ionicons';
-import { eye, eyeOff, lockClosed } from 'ionicons/icons';
+import { AuthService } from '../servicios/auth.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  email!: string;
+  password!: string;
+  username: string = '';
 
+  constructor(
+    private navCtrl: NavController,  // Cambiado para usar NavController
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  readonly VALID_USERNAME: string = '21261075-5';
-  readonly VALID_PASSWORD: string = '123123';
-
-  passwordFieldType: string = 'password'; 
-  username: string = ''; 
-  password: string = ''; 
-
-  constructor(private router: Router) { 
-
-    addIcons({ eye, eyeOff, lockClosed });
+  // Método para regresar a la página anterior
+  goBack() {
+    this.navCtrl.back();  // Regresa a la página anterior en la pila de navegación
   }
 
-  goHome() {
-    this.router.navigate(['/home']);
-  }
+  async login() {
+    const emailIngresado = this.email.trim().toLowerCase();
+    const passwordIngresado = this.password.trim();
 
-  ngOnInit() { }
+    // Validar que los campos no estén vacíos
+    if (!emailIngresado || !passwordIngresado) {
+      console.log('Por favor, completa todos los campos');
+      return;
+    }
 
- 
-  togglePasswordVisibility() {
-    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
-  }
+    try {
+      // Llamada al servicio de autenticación
+      const usuarioAutenticado = await this.authService.login(emailIngresado, passwordIngresado);
 
-  login() {
-    console.log('Intentando iniciar sesión...'); 
-
-    if (this.username && this.password) {
-      console.log(`Username ingresado: ${this.username}`);
-      console.log(`Password ingresado: ${this.password}`);
-
-      if (this.username === this.VALID_USERNAME && this.password === this.VALID_PASSWORD) {
-        console.log('Inicio de sesión exitoso');
-        this.router.navigate(['/home']); 
+      if (usuarioAutenticado) {
+        this.username = usuarioAutenticado.nombre;  // Asignar el nombre del usuario autenticado
+        console.log('Inicio de sesión exitoso -', usuarioAutenticado.rol);
+        
+        // Navegación según el rol del usuario
+        if (usuarioAutenticado.rol === 'admin') {
+          this.router.navigate(['/admin']);
+        } else if (usuarioAutenticado.rol === 'alumno') {
+          this.router.navigate(['/menu']);
+        }
       } else {
-        console.error('Error: Credenciales inválidas');
-        alert('Credenciales inválidas. Inténtalo de nuevo.');
+        console.log('Credenciales incorrectas');
       }
-    } else {
-      console.error('Error: Campos de usuario y contraseña requeridos');
-      alert('Por favor, completa todos los campos.');
+    } catch (error) {
+      console.error('Error al iniciar sesión', error);
     }
   }
 }

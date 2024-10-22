@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Menu Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <br>
+  <ion-card class="welcome-card">
+    <ion-card-content>
+      <p>Bienvenido, {{ username }}.</p>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <br>
+  <br>
+  <div class="button-container">
+    <ion-button expand="full" class="custom-button" (click)="goToReserva()">Realizar Reserva</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToModificarReserva()">Editar Reserva</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToHistorialReserva()">Historial de Reservas</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="logout()">Cerrar Sesión</ion-button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
+  </ion-toolbar>
+</ion-footer>

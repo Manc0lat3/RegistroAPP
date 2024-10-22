@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>AulaManager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form (ngSubmit)="onSubmit(registroForm)" #registroForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre Completo</ion-label>
+      <ion-input type="text" name="nombre" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" name="correo" ngModel required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" name="contraseña" ngModel required></ion-input>
+    </ion-item>
+
+    <div class="button-container">
+    <ion-button expand="full" class="custom-button" type="submit">Registrar</ion-button>
+    </div>
+  </form>
+</ion-content>
+
+<ion-card class="info-box">
+  <ion-card-content>
+    <p>Para informar al usuario de la creación del registro, el proceso tiene una validación de 72 horas hábiles.</p>
+  </ion-card-content>
+</ion-card>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
+  </ion-toolbar>
+</ion-footer>
