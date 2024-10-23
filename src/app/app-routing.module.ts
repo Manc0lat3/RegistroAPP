@@ -25,11 +25,21 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'tomar-asistencia',
+    loadChildren: () => import('./tomar-asistencia/tomar-asistencia.module').then( m => m.TomarAsistenciaPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ver-asistencia',
+    loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule)
   },
   {
     path: '**',
     redirectTo: 'login'
   },
+
+
 
 
 ];

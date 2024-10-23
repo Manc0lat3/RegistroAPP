@@ -32,15 +32,13 @@ export class MenuPage {
     this.router.navigate(['/login']);  // Redirige a la página de login
   }
 
-  // Método que se ejecuta cuando la vista está a punto de cargarse
   ionViewWillEnter() {
-    // Actualiza el nombre de usuario cuando la vista entra
     const currentUsername = this.authService.getUsername();
     this.username = currentUsername ? currentUsername : 'Usuario';
   }
 
   goToHistorialAsistencia() {
-    this.router.navigate(['/hacer-reserva']);
+    this.router.navigate(['/tomar-asistencia']);
   }
   
   goToModificarReserva() {
@@ -48,7 +46,7 @@ export class MenuPage {
   }
 
   goToHistorialReserva() {
-    this.router.navigate(['/historial-reserva']);
+    this.router.navigate(['/ver-asistencia']);
   }
 
   goBack() {
