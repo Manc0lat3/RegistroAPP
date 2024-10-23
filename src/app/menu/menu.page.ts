@@ -39,7 +39,7 @@ export class MenuPage {
     this.username = currentUsername ? currentUsername : 'Usuario';
   }
 
-  goToReserva() {
+  goToHistorialAsistencia() {
     this.router.navigate(['/hacer-reserva']);
   }
   

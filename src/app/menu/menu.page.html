@@ -6,6 +6,11 @@
       </ion-button>
     </ion-buttons>
     <ion-title>Menu Principal</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Cerrar Sesión
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -20,15 +25,13 @@
   <br>
   <br>
   <div class="button-container">
-    <ion-button expand="full" class="custom-button" (click)="goToReserva()">Realizar Reserva</ion-button>
-    <ion-button expand="full" class="custom-button" (click)="goToModificarReserva()">Editar Reserva</ion-button>
-    <ion-button expand="full" class="custom-button" (click)="goToHistorialReserva()">Historial de Reservas</ion-button>
-    <ion-button expand="full" class="custom-button" (click)="logout()">Cerrar Sesión</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToHistorialAsistencia()">Tomar Asistencia</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToHistorialReserva()">Historial de Asistencias</ion-button>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
+    <ion-title size="small" class="footer-title">© 2024 RegistrAPP. Todos los derechos reservados.</ion-title>
   </ion-toolbar>
 </ion-footer>
