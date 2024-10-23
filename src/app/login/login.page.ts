@@ -20,30 +20,26 @@ export class LoginPage {
     private authService: AuthService
   ) {}
 
-  // Método para regresar a la página anterior
   goBack() {
-    this.navCtrl.back();  // Regresa a la página anterior en la pila de navegación
+    this.navCtrl.back();  
   }
 
   async login() {
     const emailIngresado = this.email.trim().toLowerCase();
     const passwordIngresado = this.password.trim();
 
-    // Validar que los campos no estén vacíos
     if (!emailIngresado || !passwordIngresado) {
       console.log('Por favor, completa todos los campos');
       return;
     }
 
     try {
-      // Llamada al servicio de autenticación
       const usuarioAutenticado = await this.authService.login(emailIngresado, passwordIngresado);
 
       if (usuarioAutenticado) {
-        this.username = usuarioAutenticado.nombre;  // Asignar el nombre del usuario autenticado
+        this.username = usuarioAutenticado.nombre; 
         console.log('Inicio de sesión exitoso -', usuarioAutenticado.rol);
         
-        // Navegación según el rol del usuario
         if (usuarioAutenticado.rol === 'admin') {
           this.router.navigate(['/admin']);
         } else if (usuarioAutenticado.rol === 'alumno') {
