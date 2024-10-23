@@ -22,21 +22,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'hacer-reserva',
-    loadChildren: () => import('./hacer-reserva/hacer-reserva.module').then(m => m.HacerReservaPageModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'editar-reserva',
-    loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaPageModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'historial-reserva',
-    loadChildren: () => import('./historial-reserva/historial-reserva.module').then(m => m.HistorialReservaPageModule),
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule),
     canActivate: [AuthGuard]
@@ -44,10 +29,6 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
-  },
-  {
-    path: 'hacer-reserva',
-    loadChildren: () => import('./hacer-reserva/hacer-reserva.module').then( m => m.HacerReservaPageModule)
   },
 
 
