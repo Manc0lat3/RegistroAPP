@@ -19,9 +19,9 @@ export class VerAsistenciaPage implements OnInit {
     this.navCtrl.back();  
   }
   logout() {
-    this.authService.logout();  // Llama al servicio de autenticación para cerrar sesión
-    this.username = 'Usuario';  // Restablece el nombre de usuario a "Usuario"
-    this.router.navigate(['/login']);  // Redirige a la página de login
+    this.authService.logout();  
+    this.username = 'Usuario';  
+    this.router.navigate(['/login']); 
   }
   ngOnInit() {
   }

@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = "#"; // Cambia esto a la URL de tu API
+  private apiUrl = "#"; 
 
   constructor(private http: HttpClient) {}
 
@@ -36,7 +36,6 @@ export class UsuarioService {
   }
 
   private manejarError(error: any) {
-    // Manejo de errores
     return throwError(error);
   }
 }
