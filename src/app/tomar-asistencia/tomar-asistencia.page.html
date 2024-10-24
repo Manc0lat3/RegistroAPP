@@ -20,10 +20,11 @@
       <ion-title size="large">tomar-asistencia</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <ion-button (click)="takePicture()">Tomar Foto</ion-button>
+  <div class="button-container">
+  <ion-button class="custom-button" (click)="takePicture()">Tomar Foto</ion-button>
+  <ion-button class="custom-button" (click)="cancelCapture()" *ngIf="capturedImage">Cancelar Captura</ion-button>
   <img *ngIf="capturedImage" [src]="capturedImage" alt="Imagen Capturada" />  
-
+  </div>
 </ion-content>
 
 <ion-footer>

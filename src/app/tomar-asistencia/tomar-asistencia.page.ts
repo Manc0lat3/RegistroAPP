@@ -11,7 +11,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class TomarAsistenciaPage implements OnInit {
   username: string = '';
-  capturedImage: string = '';
+  capturedImage: string | null = null;
 
   constructor(
     private navCtrl: NavController,
@@ -118,9 +118,16 @@ export class TomarAsistenciaPage implements OnInit {
       alert('Error al acceder a la cámara: ' + error);
     }
   }
-  
-  
-  
+
+  cancelCapture() {
+    this.capturedImage = null; // Limpiar la imagen capturada
+    const video = document.querySelector('video');
+    if (video) {
+      const stream = video.srcObject as MediaStream;
+      stream.getTracks().forEach(track => track.stop());
+      document.body.removeChild(video);
+    }
+  }
 
   ngOnInit() {
   }
