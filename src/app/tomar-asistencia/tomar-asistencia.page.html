@@ -20,6 +20,10 @@
       <ion-title size="large">tomar-asistencia</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-button (click)="takePicture()">Tomar Foto</ion-button>
+  <img *ngIf="capturedImage" [src]="capturedImage" alt="Imagen Capturada" />  
+
 </ion-content>
 
 <ion-footer>
