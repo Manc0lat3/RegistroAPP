@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AuthService } from '../servicios/auth.service';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-tomar-asistencia',
@@ -12,6 +11,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class TomarAsistenciaPage implements OnInit {
   username: string = '';
   capturedImage: string | null = null;
+  downloadButton: HTMLAnchorElement | null = null;
 
   constructor(
     private navCtrl: NavController,
@@ -30,8 +30,6 @@ export class TomarAsistenciaPage implements OnInit {
   }
 
   async takePicture() {
-    console.log('Intentando tomar una foto...');
-  
     const video = document.createElement('video');
     video.style.position = 'fixed';
     video.style.top = '0';
@@ -78,54 +76,61 @@ export class TomarAsistenciaPage implements OnInit {
         if (context) {
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
           this.capturedImage = canvas.toDataURL('image/png');
-          console.log('Imagen capturada:', this.capturedImage);
           
-          const downloadButton = document.createElement('a');
-          downloadButton.innerText = 'Guardar Imagen';
-          downloadButton.style.position = 'absolute';
-          downloadButton.style.bottom = '70px'; 
-          downloadButton.style.left = '50%'; 
-          downloadButton.style.transform = 'translateX(-50%)'; 
-          downloadButton.style.zIndex = '1001'; 
-          downloadButton.style.padding = '10px 20px';
-          downloadButton.style.fontSize = '18px';
-          downloadButton.style.color = 'white';
-          downloadButton.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-          downloadButton.style.border = 'none';
-          downloadButton.style.borderRadius = '5px';
-          downloadButton.style.cursor = 'pointer';
-  
-          downloadButton.href = this.capturedImage;
-          downloadButton.download = 'captura.png'; 
-  
-          document.body.appendChild(downloadButton);
-          
-          downloadButton.addEventListener('click', () => {
-            document.body.removeChild(downloadButton);
-          });
+          this.showDownloadButton();
   
           stream.getTracks().forEach(track => track.stop());
   
           document.body.removeChild(video);
           document.body.removeChild(captureButton);
         } else {
-          console.error('No se pudo obtener el contexto del canvas.');
           alert('Error: No se pudo obtener el contexto del canvas.');
         }
       });
     } catch (error) {
-      console.error('Error al acceder a la cámara:', error);
       alert('Error al acceder a la cámara: ' + error);
     }
   }
 
+  showDownloadButton() {
+    this.downloadButton = document.createElement('a');
+    this.downloadButton.innerText = 'Guardar Imagen';
+    this.downloadButton.style.position = 'absolute';
+    this.downloadButton.style.bottom = '70px'; 
+    this.downloadButton.style.left = '50%'; 
+    this.downloadButton.style.transform = 'translateX(-50%)'; 
+    this.downloadButton.style.zIndex = '1001'; 
+    this.downloadButton.style.padding = '10px 20px';
+    this.downloadButton.style.fontSize = '18px';
+    this.downloadButton.style.color = 'white';
+    this.downloadButton.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    this.downloadButton.style.border = 'none';
+    this.downloadButton.style.borderRadius = '5px';
+    this.downloadButton.style.cursor = 'pointer';
+  
+    this.downloadButton.href = this.capturedImage!;
+    this.downloadButton.download = 'captura.png'; 
+
+    document.body.appendChild(this.downloadButton);
+  
+    this.downloadButton.addEventListener('click', () => {
+      document.body.removeChild(this.downloadButton!);
+      this.downloadButton = null;
+    });
+  }
+
   cancelCapture() {
-    this.capturedImage = null; // Limpiar la imagen capturada
+    this.capturedImage = null;
     const video = document.querySelector('video');
     if (video) {
       const stream = video.srcObject as MediaStream;
       stream.getTracks().forEach(track => track.stop());
       document.body.removeChild(video);
+    }
+    
+    if (this.downloadButton) {
+      document.body.removeChild(this.downloadButton);
+      this.downloadButton = null;
     }
   }
 
