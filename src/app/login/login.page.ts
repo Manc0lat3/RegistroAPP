@@ -5,9 +5,10 @@ import { AuthService } from '../servicios/auth.service';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
+    standalone: false
 })
 export class LoginPage {
   email!: string;

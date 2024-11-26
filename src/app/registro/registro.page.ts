@@ -3,9 +3,10 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+    selector: 'app-registro',
+    templateUrl: './registro.page.html',
+    styleUrls: ['./registro.page.scss'],
+    standalone: false
 })
 export class RegistroPage {
   constructor(private router: Router) {}

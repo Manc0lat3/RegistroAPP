@@ -4,9 +4,10 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
-  selector: 'app-tomar-asistencia',
-  templateUrl: './tomar-asistencia.page.html',
-  styleUrls: ['./tomar-asistencia.page.scss'],
+    selector: 'app-tomar-asistencia',
+    templateUrl: './tomar-asistencia.page.html',
+    styleUrls: ['./tomar-asistencia.page.scss'],
+    standalone: false
 })
 export class TomarAsistenciaPage implements OnInit {
   username: string = '';

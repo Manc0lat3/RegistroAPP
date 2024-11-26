@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.page.html',
-  styleUrls: ['./menu.page.scss'],
+    selector: 'app-menu',
+    templateUrl: './menu.page.html',
+    styleUrls: ['./menu.page.scss'],
+    standalone: false
 })
 export class MenuPage {
   username: string = '';

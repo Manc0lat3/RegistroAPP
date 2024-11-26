@@ -4,9 +4,10 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from '../servicios/auth.service';
 
 @Component({
-  selector: 'app-ver-asistencia',
-  templateUrl: './ver-asistencia.page.html',
-  styleUrls: ['./ver-asistencia.page.scss'],
+    selector: 'app-ver-asistencia',
+    templateUrl: './ver-asistencia.page.html',
+    styleUrls: ['./ver-asistencia.page.scss'],
+    standalone: false
 })
 export class VerAsistenciaPage implements OnInit {
   username: string = '';
