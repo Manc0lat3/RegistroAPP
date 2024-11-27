@@ -1,52 +1,45 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+interface UserResponse {
+  id: number;
+  nombre: string;
+  correo: string;
+  rol: string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private usuarios = [
-    {
-      correo: 'administrador@xmen.com',
-      contraseña: 'administrador123',
-      nombre: 'Administrador',
-      rol: 'admin'
-    },
-    {
-      correo: 'alumno@xmen.com',
-      contraseña: 'alumno123',
-      nombre: 'Alumno',
-      rol: 'alumno'
-    }
-  ];
+  private apiUrl = 'http://localhost:3000/api/login';
 
   private isLoggedIn = false;
-  private currentUser: { nombre: string; rol: string } | null = null;
+  private currentUser: { id: number; nombre: string; rol: string } | null = null;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): { nombre: string; rol: string } | null {
-    const usuario = this.usuarios.find(u => u.correo === email && u.contraseña === password);
-    if (usuario) {
-      this.isLoggedIn = true;
-      this.currentUser = { nombre: usuario.nombre, rol: usuario.rol };
-      return this.currentUser;
-    }
-    return null;
+  login(email: string, password: string): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.apiUrl, { email, password });
   }
 
+  setCurrentUser(user: { id: number; nombre: string; rol: string }) {
+    this.isLoggedIn = true;
+    this.currentUser = user;
+  }
 
   isAuthenticated(): boolean {
     return this.isLoggedIn;
   }
 
- 
+
   logout() {
     this.isLoggedIn = false;
     this.currentUser = null;
   }
-  getCurrentUser(): { nombre: string; rol: string } | null {
+  getCurrentUser(): { id: number; nombre: string; rol: string } | null {
     return this.currentUser;
-  }
+}
   getUsername(): string {
     return this.currentUser ? this.currentUser.nombre : '';
   }

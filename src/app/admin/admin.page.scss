@@ -1,93 +1,78 @@
+// Estilos para el título
 ion-toolbar {
---background: #80B155;
-color: white;
-}
-
-ion-title {
-font-family: sans-serif;
-font-size: 20px;
-}
-
-ion-icon {
-font-size: 30px;
-color: #F5EDED;
-}
-
-ion-content {
-padding: 20px;
-}
-
-ion-footer {
---background: #80B155;
-}
-
-.footer-title {
-font-size: 14px;
-text-align: center;
-color: #F5EDED;
-}
-
-form {
-margin-top: 20px;
-}
-
-ion-item {
-margin-bottom: 15px;
-margin: 0px 30px;
-}
-
-
-.welcome-message {
-margin: 20px 0px;
-}
-
-.button-container {
-display: flex;
-flex-direction: column;
-align-items: center; 
-justify-content: center;
-margin: 0px 30px;
-}
-
-.custom-button {
-width: 100%;
-height: 50px;
-margin: 10px 0;
-border-radius: 25px;
---ion-color: #F5EDED;
---background: #80B155;
-font-size: 16px;
-text-align: center;
-text-transform: uppercase;
-}
-.register-message {
-text-align: center;
-margin-top: 20px;
-color: #666;
-}
-
-.info-box {
-background-color: #80B155;
-margin: 0px 30px;
-}
-
-.info-box p {
-font-size: 16px;
-color: #F5EDED;
-line-height: 1.5;
-text-align: center;
-margin: 0px 30px;
-}
-.welcome-card {
-background-color: #80B155;
-margin: 0px 30px;
-}
-
-.welcome-card p {
-font-size: 16px;
-color: #F5EDED;
-line-height: 1.5;
-text-align: center;
-margin: 0px 30px;
-}
-
+    --background: #6482AD;
+  }
+  
+  ion-title {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #F5EDED;
+  }
+  
+  ion-icon {
+    font-size: 30px;
+    color: #F5EDED;
+  }
+  
+  ion-content {
+    padding: 20px;
+  }
+  
+  // Estilos para los acordeones
+  .acordeon-container {
+    margin: 20px 30px;
+  }
+  
+  ion-accordion {
+    margin-bottom: 15px;
+    --background: #F5EDED;
+  }
+  
+  ion-item {
+    --color: #333;
+    --background: #6482AD;
+  }
+  
+  ion-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #F5EDED;
+  }
+  
+  .ion-padding {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  // Estilos para el botón "Ir al Menú de Alumnos"
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 30px;
+  }
+  
+  .custom-button {
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    border-radius: 25px;
+    --ion-color: #F5EDED;
+    --background: #6482AD;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  // Estilos para el footer
+  ion-footer {
+    --background: #6482AD;
+  }
+  
+  .footer-title {
+    font-size: 14px;
+    text-align: center;
+    color: #F5EDED;
+  }
+  

@@ -5,16 +5,15 @@
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>RegistrAPP</ion-title>
+    <ion-title>AulaManager</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <br>
-  <br>
+  <div class="welcome-message">
     <ion-card class="welcome-card">
       <ion-card-content>
-        <p>Bienvenido Usuario.</p>
+        <p>Bienvenido, Usuario</p>
       </ion-card-content>
     </ion-card>
     <hr>
@@ -24,6 +23,7 @@
       </ion-card-content>
     </ion-card>
     <hr>
+  </div>
 
   <div class="input-container">
     <ion-item>
@@ -44,6 +44,8 @@
   <div class="register-message">
     <p>¿No tienes cuenta? <a routerLink="/registro">¡Regístrate!</a></p>
   </div>
+  
+
 
 </ion-content>
 
@@ -51,6 +53,6 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title size="small" class="footer-title">© 2024 RegistrAPP. Todos los derechos reservados.</ion-title>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
   </ion-toolbar>
 </ion-footer>

@@ -5,10 +5,9 @@
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>RegistrAPP</ion-title>
+    <ion-title>AulaManager</ion-title>
   </ion-toolbar>
 </ion-header>
-
 
 <ion-content>
   <form (ngSubmit)="onSubmit(registroForm)" #registroForm="ngForm">
@@ -28,13 +27,13 @@
     </ion-item>
 
     <div class="button-container">
-      <ion-button expand="full" class="custom-button" (click)="goBack()">Registrar</ion-button>
+    <ion-button expand="full" class="custom-button" type="submit">Registrar</ion-button>
     </div>
   </form>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title size="small" class="footer-title">© 2024 RegistrAPP. Todos los derechos reservados.</ion-title>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
   </ion-toolbar>
 </ion-footer>

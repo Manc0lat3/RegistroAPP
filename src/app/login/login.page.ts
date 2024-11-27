@@ -2,55 +2,57 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
+import { UsuarioService } from '../servicios/usuario.service'; 
+import * as moment from 'moment-timezone';
 
-
+const fechaUtc = "2024-11-21T03:00:00.000Z";
+const fechaChilena = moment.tz(fechaUtc, 'America/Santiago').format('YYYY-MM-DD HH:mm:ss');
+console.log(fechaChilena);
+interface UserResponse {
+  id: number;
+  nombre: string;
+  correo: string;
+  rol: string;
+}
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.page.html',
-    styleUrls: ['./login.page.scss'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
   email!: string;
   password!: string;
   username: string = '';
+  errorMessage: string = '';
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+  };
 
-  constructor(
-    private navCtrl: NavController,  // Cambiado para usar NavController
-    private router: Router,
-    private authService: AuthService
-  ) {}
+  constructor(private navCtrl: NavController, private router: Router, private authService: AuthService,private usuarioService: UsuarioService) {}
 
   goBack() {
-    this.navCtrl.back();  
+    this.router.navigate(['/login']);
   }
 
-  async login() {
-    const emailIngresado = this.email.trim().toLowerCase();
-    const passwordIngresado = this.password.trim();
-
-    if (!emailIngresado || !passwordIngresado) {
-      console.log('Por favor, completa todos los campos');
-      return;
-    }
-
-    try {
-      const usuarioAutenticado = await this.authService.login(emailIngresado, passwordIngresado);
-
-      if (usuarioAutenticado) {
-        this.username = usuarioAutenticado.nombre; 
-        console.log('Inicio de sesión exitoso -', usuarioAutenticado.rol);
-        
-        if (usuarioAutenticado.rol === 'admin') {
-          this.router.navigate(['/admin']);
-        } else if (usuarioAutenticado.rol === 'alumno') {
-          this.router.navigate(['/menu']);
-        }
-      } else {
-        console.log('Credenciales incorrectas');
+  login() {
+    this.authService.login(this.email, this.password).subscribe(
+      (response: UserResponse) => {
+        const user = {
+          id: response.id,
+          nombre: response.nombre,
+          rol: response.rol,
+        };
+        this.authService.setCurrentUser(user);
+        this.router.navigate(['/menu']);
+      },
+      (error) => {
+        this.errorMessage = 'Credenciales inválidas. Intenta de nuevo.';
       }
-    } catch (error) {
-      console.error('Error al iniciar sesión', error);
-    }
+    );
   }
 }

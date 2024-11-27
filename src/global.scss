@@ -25,13 +25,6 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-
-ion-content{
-    --background: rgba(253, 253, 253, 0.952);
-}
-:root {
-    --ion-background-color: rgba(253, 253, 253, 0.952); /* Cambia este valor por el color que prefieras */
-  }
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -42,3 +35,9 @@ ion-content{
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 /*@import "@ionic/angular/css/palettes/dark.system.css";*/
+ion-content{
+    --background: #f2f0eb;
+}
+:root {
+    --ion-background-color:#a18594 /* Cambia este valor por el color que prefieras */
+  }

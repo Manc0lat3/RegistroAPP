@@ -1,7 +1,8 @@
+// Estilos para el título
 ion-toolbar {
-  --background: #80B155;
-  color: white;
-  }
+--background: #a18594;
+color:white
+}
 
 ion-title {
 font-family: sans-serif;
@@ -17,8 +18,9 @@ ion-content {
 padding: 20px;
 }
 
+// Estilos para el footer
 ion-footer {
---background: #80B155;
+--background: #a18594;
 }
 
 .footer-title {
@@ -27,6 +29,7 @@ text-align: center;
 color: #F5EDED;
 }
 
+// Estilos para los formularios
 form {
 margin-top: 20px;
 }
@@ -35,6 +38,8 @@ ion-item {
 margin-bottom: 15px;
 margin: 0 30px;
 }
+
+// Estilos para los botones
 
 .welcome-message {
 margin: 20px 0;
@@ -55,7 +60,7 @@ height: 50px;
 margin: 10px 0;
 border-radius: 25px;
 --ion-color: #F5EDED;
---background: #80B155;
+--background: #a18594;
 font-size: 16px;
 text-align: center;
 text-transform: uppercase;
@@ -67,7 +72,7 @@ color: #666;
 }
 
 .info-box {
-background-color: #80B155;
+background-color: #a18594;
 margin: 0px 30px;
 }
 
@@ -79,7 +84,7 @@ text-align: center;
 margin: 0px 30;
 }
 .welcome-card {
-background-color: #80B155;
+background-color: #a18594;
 margin: 0px 30px;
 }
 

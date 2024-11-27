@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -22,32 +23,34 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule),
-    canActivate: [AuthGuard]
-  },  {
-    path: 'tomar-asistencia',
-    loadChildren: () => import('./tomar-asistencia/tomar-asistencia.module').then( m => m.TomarAsistenciaPageModule),
+    path: 'hacer-reserva',
+    loadChildren: () => import('./hacer-reserva/hacer-reserva.module').then(m => m.HacerReservaPageModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'ver-asistencia',
-    loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then( m => m.VerAsistenciaPageModule)
+    path: 'editar-reserva',
+    loadChildren: () => import('./editar-reserva/editar-reserva.module').then(m => m.EditarReservaPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'historial-reserva',
+    loadChildren: () => import('./historial-reserva/historial-reserva.module').then(m => m.HistorialReservaPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
     redirectTo: 'login'
-  },
-
-
-
-
-
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),HttpClientModule
   ],
   exports: [RouterModule]
 })

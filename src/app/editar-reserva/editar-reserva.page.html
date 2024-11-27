@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar Reserva</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+
+<ion-content [fullscreen]="true">
+  <div class="welcome-message">
+    <ion-card class="welcome-card">
+      <ion-card-content>
+        <p>Bienvenido, {{ username }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <form (ngSubmit)="guardarReserva()">
+    <ion-item>
+      <ion-label position="floating">Nombre de la Reserva</ion-label>
+      <ion-input type="text" [(ngModel)]="reservaEditada.nombre" name="nombre" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <ion-input type="date" [(ngModel)]="reservaEditada.fecha" name="fecha" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Hora</ion-label>
+      <ion-input type="time" [(ngModel)]="reservaEditada.hora" name="hora" required></ion-input>
+    </ion-item>
+    <div class="button-container">
+    <ion-button expand="full" class="custom-button" type="submit">Guardar Cambios</ion-button>
+    </div>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { Location } from '@angular/common';
 @Component({
-    selector: 'app-menu',
-    templateUrl: './menu.page.html',
-    styleUrls: ['./menu.page.scss'],
-    standalone: false
+  selector: 'app-menu',
+  templateUrl: './menu.page.html',
+  styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage {
   username: string = '';
@@ -28,18 +27,12 @@ export class MenuPage {
   }
 
   logout() {
-    this.authService.logout();  
-    this.username = 'Usuario';  
-    this.router.navigate(['/login']); 
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
-  ionViewWillEnter() {
-    const currentUsername = this.authService.getUsername();
-    this.username = currentUsername ? currentUsername : 'Usuario';
-  }
-
-  goToHistorialAsistencia() {
-    this.router.navigate(['/tomar-asistencia']);
+  goToReserva() {
+    this.router.navigate(['/hacer-reserva']);
   }
   
   goToModificarReserva() {
@@ -47,7 +40,7 @@ export class MenuPage {
   }
 
   goToHistorialReserva() {
-    this.router.navigate(['/ver-asistencia']);
+    this.router.navigate(['/historial-reserva']);
   }
 
   goBack() {

@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
+      <ion-button (click)="logout()">
         <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>Menu Principal</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="logout()">Cerrar Sesión
+      <ion-button (click)="  logout()">Cerrar Sesion
         <ion-icon name="close-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,23 +15,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <br>
-  <ion-card class="welcome-card">
-    <ion-card-content>
-      <p>Bienvenido, {{ username }}.</p>
-    </ion-card-content>
-  </ion-card>
-  <br>
-  <br>
-  <br>
+  <div class="welcome-message">
+    <ion-card class="welcome-card">
+      <ion-card-content>
+        <p>Bienvenido, {{ username }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
   <div class="button-container">
-    <ion-button expand="full" class="custom-button" (click)="goToHistorialAsistencia()">Tomar Asistencia</ion-button>
-    <ion-button expand="full" class="custom-button" (click)="goToHistorialReserva()">Historial de Asistencias</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToReserva()">Realizar Reserva</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToModificarReserva()">Editar Reserva</ion-button>
+    <ion-button expand="full" class="custom-button" (click)="goToHistorialReserva()">Historial de Reservas</ion-button>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-title size="small" class="footer-title">© 2024 RegistrAPP. Todos los derechos reservados.</ion-title>
+    <ion-title size="small" class="footer-title">© 2024 AulaManager. Todos los derechos reservados.</ion-title>
   </ion-toolbar>
 </ion-footer>

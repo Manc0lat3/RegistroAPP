@@ -1,18 +1,22 @@
 // Estilos para el título
 ion-toolbar {
-    --background: #80B155;
-    color: white
+    --background: #a18594;
     }
     
     ion-title {
     font-family: sans-serif;
     font-size: 20px;
+    color: white;
     }
     
     ion-icon {
     font-size: 30px;
-    color: #ffffff;
+    color: #F5EDED;
     }
+    ion-button {
+        font-size: 30px;
+        color: #F5EDED;
+        }
     
     ion-content {
     padding: 20px;
@@ -20,14 +24,14 @@ ion-toolbar {
     
     // Estilos para el footer
     ion-footer {
-    --background: #C08552;
-    color:white
+    --background: #a18594;
+    color: white;
     }
-    
+
     .footer-title {
     font-size: 14px;
     text-align: center;
-    color:white
+    color: #F5EDED;
     }
     
     // Estilos para los formularios
@@ -60,7 +64,7 @@ ion-toolbar {
         margin: 10px 0;
         border-radius: 25px;
         --ion-color: #F5EDED;
-        --background: #80B155;
+        --background: #a18594;
         font-size: 16px;
         text-align: center;
         text-transform: uppercase;
@@ -68,11 +72,11 @@ ion-toolbar {
     .register-message {
     text-align: center;
     margin-top: 20px;
-    color: #666;
+    color: #050505;
     }
     
     .info-box {
-        background-color: #80B155;
+        background-color: #a18594;
         margin: 0px 30px;
     }
     
@@ -84,26 +88,37 @@ ion-toolbar {
         margin: 0px 30px;
     }
     .welcome-card {
-        background-color: #80B155;
+        background-color: #a18594;
         margin: 0px 30px;
     }
     
     .welcome-card p {
         font-size: 16px;
-        color: #F5EDED; 
+        color: #F5EDED;
         line-height: 1.5;
         text-align: center;
         margin: 0px 30px;
     }
 
-    ion-slides, ion-slide {
-        height: 100%;
+    ion-slides {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        margin-top: 20px;
+        margin: 0px 30px;
       }
       
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
-        margin: auto;
+      ion-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px; // Altura del slide
+      }
+      
+      ion-slide img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
       }
       
