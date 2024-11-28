@@ -78,8 +78,8 @@ app.post('/api/login', (req, res) => {
   app.post('/api/reservas', (req, res) => {
     const { idusuario, sala, fecha, horaini, horafin } = req.body;
 
-    const fechaChilena = moment.tz(`${fecha} ${horaini}`, 'America/Santiago').toISOString();
-    const fechaFinChilena = moment.tz(`${fecha} ${horafin}`, 'America/Santiago').toISOString();
+    const fechaChilena = moment.tz($,{fecha}, $,{horaini}, 'America/Santiago').toISOString();
+    const fechaFinChilena = moment.tz($,{fecha}, $,{horafin}, 'America/Santiago').toISOString();
 
     const query = 'INSERT INTO reservas (idusuario, sala, fecha, horaini, horafin) VALUES (?, ?, ?, ?, ?)';
     db.query(query, [idusuario, sala, fecha, horaini, horafin], (err, result) => {
@@ -104,5 +104,5 @@ app.post('/api/login', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor backend corriendo en http://localhost:${port}`);
+  console.log('Servidor backend corriendo en http://localhost:${port}');
 });
