@@ -23,6 +23,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'tomar-asistencia',
+    loadChildren: () => import('./tomar-asistencia/tomar-asistencia.module').then(m => m.TomarAsistenciaPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ver-asistencia',
+    loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then(m => m.VerAsistenciaPageModule),
+    canActivate: [AuthGuard]
+  },
+
+
+  {
     path: '**',
     redirectTo: 'login'
   }
