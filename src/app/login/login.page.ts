@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../servicios/auth.service';
 import { UsuarioService } from '../servicios/usuario.service'; 
 import * as moment from 'moment-timezone';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 const fechaUtc = "2024-11-21T03:00:00.000Z";
 const fechaChilena = moment.tz(fechaUtc, 'America/Santiago').format('YYYY-MM-DD HH:mm:ss');
@@ -18,6 +19,23 @@ interface UserResponse {
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  animations: [
+    trigger('moveUp', [
+      transition(':enter', [
+        style({ transform: 'translateY(100%)' }),
+        animate('1s ease-out', style({ transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [
+        animate('1s ease-in', style({ transform: 'translateY(100%)' }))
+      ]),
+      // Añadimos la animación infinita
+      transition('* => *', [
+        style({ transform: 'translateY(100%)' }),
+        animate('2s ease-in-out', style({ transform: 'translateY(0)' })),
+        animate('2s ease-in-out', style({ transform: 'translateY(100%)' }))
+      ])
+    ])
+  ]
 })
 export class LoginPage {
   email!: string;
