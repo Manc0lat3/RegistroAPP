@@ -32,7 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./ver-asistencia/ver-asistencia.module').then(m => m.VerAsistenciaPageModule),
     canActivate: [AuthGuard]
   },
-
   {
     path: '**',
     redirectTo: 'login'
