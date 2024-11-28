@@ -31,17 +31,14 @@ export class MenuPage {
     this.router.navigate(['/login']);
   }
 
-  goToReserva() {
-    this.router.navigate(['/hacer-reserva']);
+  goToTomarAsistencia() {
+    this.router.navigate(['/tomar-asistencia']);
   }
   
-  goToModificarReserva() {
-    this.router.navigate(['/editar-reserva']);
+  goToVerAsistencia() {
+    this.router.navigate(['/ver-asistencia']);
   }
 
-  goToHistorialReserva() {
-    this.router.navigate(['/historial-reserva']);
-  }
 
   goBack() {
     this.router.navigate(['/login']);
